@@ -1180,4 +1180,22 @@
                 }
             });
         });
+        Tabletop.init({
+    key: 'https://docs.google.com/spreadsheets/d/1lMVz2013u0BCGE1Yz0dfMmQWyQLEdgczeijrS_15N3w/pubhtml',
+    callback: function(data) {
+      const container = document.getElementById("book-list");
+      data.forEach(book => {
+        container.innerHTML += `
+          <div style="margin-bottom: 20px; border-bottom: 1px solid gray;">
+            <h3>${book.Title}</h3>
+            <p><strong>Author:</strong> ${book.Author}</p>
+            <p><strong>Category:</strong> ${book.Category}</p>
+            <p><strong>Year:</strong> ${book.Year}</p>
+            ${book.CoverImageURL ? `<img src="${book.CoverImageURL}" width="100">` : ''}
+          </div>
+        `;
+      });
+    },
+    simpleSheet: true
+  });
   
